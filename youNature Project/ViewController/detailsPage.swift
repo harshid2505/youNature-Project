@@ -94,20 +94,22 @@ class detailsPage: UIViewController {
     }
     
     func imagePiker(){
-        let alert = UIAlertController(title: "Select Image.", message: "You can select image with photos or camera.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Select Image.", message: "You can select image with photos or camera.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Photos", style: .default,handler: {_ in
             self.getImageGallery()
         }))
         alert.addAction(UIAlertAction(title: "Camera", style: .default,handler: {_ in
             self.getImageCamera()
         }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         present(alert, animated: true)
     }
     
     private func alertAction() {
         let alert = UIAlertController(title: "Please Enter Detailes.", message: "Please fill a all Details.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        
         present(alert, animated: true)
     }
     
@@ -158,7 +160,7 @@ class detailsPage: UIViewController {
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
-        delegate?.setButtonState()
+        dismiss(animated: true)
     }
     
     @IBAction func addButtonAction(_ sender: UIButton) {

@@ -40,11 +40,12 @@ class ListMainPage: UIViewController{
     
     func alertAction(with indexPath: IndexPath){
         let alert = UIAlertController(title: "Are you sure", message: "You want to remove this list", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive,handler: { [self] _ in
             listOfArr.remove(at: indexPath.row)
             addTableView.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        
         present(alert, animated: true)
 
     }
@@ -52,7 +53,6 @@ class ListMainPage: UIViewController{
     @IBAction func addListButtonAction(_ sender: Any) {
         let navigate = storyboard?.instantiateViewController(identifier: "detailsPage") as! detailsPage
         navigate.delegate = self
-        addButton.isHidden = true
         present(navigate, animated: true)
     }
     
