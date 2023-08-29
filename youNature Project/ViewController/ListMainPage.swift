@@ -40,13 +40,11 @@ class ListMainPage: UIViewController{
     
     func alertAction(with indexPath: IndexPath){
         let alert = UIAlertController(title: "Are you sure", message: "You want to remove this list", preferredStyle: .alert)
-        let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { [self] _ in
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive,handler: { [self] _ in
             listOfArr.remove(at: indexPath.row)
             addTableView.reloadData()
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .default)
-        alert.addAction(deleteButton)
-        alert.addAction(cancelButton)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         present(alert, animated: true)
 
     }

@@ -95,23 +95,19 @@ class detailsPage: UIViewController {
     
     func imagePiker(){
         let alert = UIAlertController(title: "Select Image.", message: "You can select image with photos or camera.", preferredStyle: .alert)
-        let gallery = UIAlertAction(title: "Photos", style: .default) {_ in
+        alert.addAction(UIAlertAction(title: "Photos", style: .default,handler: {_ in
             self.getImageGallery()
-        }
-        
-        let camera = UIAlertAction(title: "Camera", style: .default) {_ in
+        }))
+        alert.addAction(UIAlertAction(title: "Camera", style: .default,handler: {_ in
             self.getImageCamera()
-        }
-        
-        alert.addAction(gallery)
-        alert.addAction(camera)
+        }))
         present(alert, animated: true)
     }
     
     private func alertAction() {
         let alert = UIAlertController(title: "Please Enter Detailes.", message: "Please fill a all Details.", preferredStyle: .alert)
-        UIAlertAction(title: "Ok", style: .default)
-        UIAlertAction(title: "Cancel", style: .destructive)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive))
         present(alert, animated: true)
     }
     
