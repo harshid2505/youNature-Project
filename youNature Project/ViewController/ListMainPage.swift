@@ -107,7 +107,10 @@ extension ListMainPage: UITableViewDelegate,UITableViewDataSource{
     }
 }
 
+// PROTOCOL
+
 extension ListMainPage: AddListVcDelegate{
+    
     func passMyList(with list: List) {
         addButton.isHidden = false
         emptyImage.isHidden = true
